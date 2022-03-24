@@ -5,7 +5,9 @@ type DOMTargetT = {value: string}
 type ChangeSymbolT = { target: DOMTargetT}
 
 const SelectSymbol = () => {
-const { symbols, setSelectedSymbol } = useStore()
+const { storeState, storeActions } = useStore();
+const { symbols } = storeState;
+const {setSelectedSymbol} = storeActions;
 
 
 const onSymbolChange = (e: ChangeSymbolT) => {

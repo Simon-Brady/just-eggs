@@ -1,21 +1,17 @@
-import create from 'zustand';
-import symbols_staging from '../fixtures/symbols_staging.json';
+import { useContext } from 'react';
+import { AppStoreContext } from './AppStore';
 
-type TSymbol = {
-    symbol: string
-}
+/**
+ * Use Store Hook for using the store context
+ * If the app is not wrapped around a StoreProvider it will throw an error
+ */
+const useStore = () => {
+	const context = useContext(AppStoreContext);
 
-interface IState {
-    symbols: TSymbol[],
-    selectedSymbol: null | string,
-    setSelectedSymbol: (value: string) => void
-}
-
-const useStore = create<IState>(set => ({
-    symbols: symbols_staging,
-    selectedSymbol: null,
-    setSelectedSymbol: (value) => set({selectedSymbol: value})
-}));
-
+	if (context === undefined) {
+		throw new Error('useStore requires a Store in the upper scope.');
+	}
+	return context;
+};
 
 export default useStore;

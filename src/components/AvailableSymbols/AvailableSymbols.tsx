@@ -2,9 +2,10 @@ import React from "react";
 import { useStore } from "../../store";
 
 const AvailableSymbols = () => {
-// const { symbols } = useStore()
-const symbols = useStore(state => state.symbols);
-    return <ul>{symbols.map((symbol, key) => <li key={key}>{symbol.symbol}</li>)}</ul>
+const { storeState } = useStore();
+const { symbols} = storeState;
+// const symbols = useStore(state => state.symbols);
+    return <ul>{symbols ? symbols.map((symbol: {symbol: string}, key: any) => <li key={key}>{symbol.symbol}</li>): null}</ul>
 
 };
 
