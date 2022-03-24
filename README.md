@@ -1,4 +1,4 @@
-# steak-and-eggs
+# just-eggs
 
 Test repo to handle:
 
